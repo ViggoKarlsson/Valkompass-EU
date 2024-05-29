@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tegazines EU-valkompass</title>
+    <style>
+        * {
+            font-family: monospace;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(144,0,50,255);
+            background-image: repeating-linear-gradient(
+                23deg,
+                rgba(144,0,50,255) 0px,
+                rgba(144,0,50,255) 640px,
+                white 640px,
+                white 680px,
+                blue 680px,
+                blue 720px,
+                rgba(144,0,50,255) 720px,
+                rgba(144,0,50,255) 1000px
+            );
+            margin: 0;
+            padding: 22px;
+        }
+        
+        
+        hr { 
+            height: 3px;
+            margin: 25px 10px;
+            background-image: linear-gradient(to right, rgba(4, 0, 255, 0), rgb(245, 0, 0), rgba(0, 0, 0, 0)); 
+            border: 0; 
+        }
+
+        /* CSS */
+        button {
+        --c: #fff;
+        /* text color */
+        background: linear-gradient(90deg, #0000 33%, #fff5, #0000 67%) var(--_p,100%)/300% no-repeat,
+            #1a4cc0;
+        /* background color */
+        color: #0000;
+        border: none;
+        transform: perspective(500px) rotateY(calc(15deg*var(--_i,-1)));
+        text-shadow: calc(var(--_i,-1)* 0.08em) -.01em 0   var(--c),
+            calc(var(--_i,-1)*-0.15em)  .01em 2px #0004;
+        outline-offset: 0.1em;
+        transition: 0.5s;
+        }
+
+        button:hover,
+        button:focus-visible {
+        --_p: 0%;
+        --_i: 1;
+        }
+
+        button:active {
+        text-shadow: none;
+        color: var(--c);
+        box-shadow: inset 0 0 9e9q #0005;
+        transition: 0s;
+        }
+
+        button {
+        border-radius: 10px;
+        font-weight: bold;
+        font-size: 2rem;
+        margin: 0;
+        cursor: pointer;
+        padding: .1em .3em;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 60px;
+            color: #ffffff;
+            text-shadow:
+                -4px -4px 10px rgba(144,0,50,255),
+                 4px -4px 10px rgba(144,0,50,255),
+                -4px  4px 10px rgba(144,0,50,255),
+                 4px  4px 10px rgba(144,0,50,255); /* Fyra skuggor runt varje bokstav */
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+            border-radius: 50px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .result {
+            text-align: center;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            margin-top: 30px;
+        }
+
+        .party {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+
+        
+        .images {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .images img {
+            max-width: 100%;
+            margin: 10px;
+        }
+
+        @media screen and (min-width: 0px) {
+            * {
+                font-size: 107%;
+            }
+
+            .images {
+                flex-direction: column;
+            }
+
+            .images img {
+                max-height: 200px;
+            }
+        }
+
+        @media screen and (min-width: 700px) {
+            * {
+                font-size: 107%;
+            }
+
+            .images {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .images img {
+                max-width: auto;
+                max-height: 200px;
+            }
+        }
+
+    </style>
+</head>
+<h1>Tegazines EU-valkompass</h1>
+<body>
+
+    <div class="container">
+        <form id="valkompassForm">
+            <div class="question">
+                <label for="q1">1.<br>EU är fundamentalt ...</label>
+                <input type="radio" id="q1-1" name="q1" value="1" required> Bra
+                <input type="radio" id="q1-0" name="q1" value="0"> Neutralt
+                <input type="radio" id="q1--1" name="q1" value="-1"> Dåligt
+            </div>
+            <hr>
+            <div class="question">
+                <label for="q2">2.<br>EU ska få mer makt över medlemsländer.</label>
+                <input type="radio" id="q2-1" name="q2" value="1" required> Bra
+                <input type="radio" id="q2-0" name="q2" value="0"> Neutralt
+                <input type="radio" id="q2--1" name="q2" value="-1"> Dåligt
+            </div>
+            <hr>
+            <div class="question">
+                <label for="q3">3.<br>EU bör bygga en fast mur/stängsel kring sin yttre gräns.</label>
+                <input type="radio" id="q3-1" name="q3" value="1" required> Bra
+                <input type="radio" id="q3-0" name="q3" value="0"> Neutralt
+                <input type="radio" id="q3--1" name="q3" value="-1"> Dåligt
+            </div>
+            <hr>
+            <div class="question">
+                <label for="q4">4.<br>EU-länder som inte uppnår klimatmål ska straffas.</label>
+                <input type="radio" id="q4-1" name="q4" value="1" required> Bra
+                <input type="radio" id="q4-0" name="q4" value="0"> Neutralt
+                <input type="radio" id="q4--1" name="q4" value="-1"> Dåligt
+            </div>
+            <hr>
+            <div class="question">
+                <label for="q5">5.<br>EU ska säkra aborträtt i alla medlemsländer.</label>
+                <input type="radio" id="q5-1" name="q5" value="1" required> Bra
+                <input type="radio" id="q5-0" name="q5" value="0"> Neutralt
+                <input type="radio" id="q5--1" name="q5" value="-1"> Dåligt
+            </div>
+            <hr>
+            <div class="question">
+                <label for="q6">6.<br>EU ska införa en minimumkvot för flyktingmottagande i medlemsländer.</label>
+                <input type="radio" id="q6-1" name="q6" value="1" required> Bra
+                <input type="radio" id="q6-0" name="q6" value="0"> Neutralt
+                <input type="radio" id="q6--1" name="q6" value="-1"> Dåligt
+            </div>
+            <hr>
+            <div class="question">
+                <label for="q7">7.<br>EU ska lägga mer pengar på bistånd till utvecklingsländer.</label>
+                <input type="radio" id="q7-1" name="q7" value="1" required> Bra
+                <input type="radio" id="q7-0" name="q7" value="0"> Neutralt
+                <input type="radio" id="q7--1" name="q7" value="-1"> Dåligt
+            </div>
+            <hr>
+            <div class="question">
+                <label for="q8">8.<br>Sverige bör folkomrösta om att lämna EU.</label>
+                <input type="radio" id="q8-1" name="q8" value="1" required> Bra
+                <input type="radio" id="q8-0" name="q8" value="0"> Neutralt
+                <input type="radio" id="q8--1" name="q8" value="-1"> Dåligt
+            </div>
+            <hr>
+            <div class="question">
+                <label for="q9">9.<br>Cannabis ska vara lagligt i hela EU.</label>
+                <input type="radio" id="q9-1" name="q9" value="1" required> Bra
+                <input type="radio" id="q9-0" name="q9" value="0"> Neutralt
+                <input type="radio" id="q9--1" name="q9" value="-1"> Dåligt
+            </div>
+            <hr>
+            <div class="question">
+                <label for="q10">10.<br>Invandring till EU är...</label>
+                <input type="radio" id="q10-1" name="q10" value="1" required> Bra
+                <input type="radio" id="q10-0" name="q10" value="0"> Neutralt
+                <input type="radio" id="q10--1" name="q10" value="-1"> Dåligt
+            </div>
+            <hr>
+            <div class="question">
+                <label for="q11">11.<br>Massövervakning genom exempelvis AI ska vara tillåtet för brottsbekämpning.</label>
+                <input type="radio" id="q11-1" name="q11" value="1" required> Bra
+                <input type="radio" id="q11-0" name="q11" value="0"> Neutralt
+                <input type="radio" id="q11--1" name="q11" value="-1"> Dåligt
+            </div>
+            <hr>
+            <div class="question">
+                <label for="q12">12.<br>Euro ska införas som valuta i Sverige.</label>
+                <input type="radio" id="q12-1" name="q12" value="1" required> Bra
+                <input type="radio" id="q12-0" name="q12" value="0"> Neutralt
+                <input type="radio" id="q12--1" name="q12" value="-1"> Dåligt
+            </div>
+            <hr>
+            <div class="question">
+                <label for="q13">13.<br>Tiktok ska förbjudas inom EU.</label>
+                <input type="radio" id="q13-1" name="q13" value="1" required> Bra
+                <input type="radio" id="q13-0" name="q13" value="0"> Neutralt
+                <input type="radio" id="q13--1" name="q13" value="-1"> Dåligt
+            </div>
+            <hr>
+            <div class="question">
+                <label for="q14">14.<br>EU ska underlätta för utveckling av kärnkraft.</label>
+                <input type="radio" id="q14-1" name="q14" value="1" required> Bra
+                <input type="radio" id="q14-0" name="q14" value="0"> Neutralt
+                <input type="radio" id="q14--1" name="q14" value="-1"> Dåligt
+            </div>
+            <hr>
+            <div class="question">
+                <label for="q15">15.<br>EU bör stödja Ukraina mer.</label>
+                <input type="radio" id="q15-1" name="q15" value="1" required> Bra
+                <input type="radio" id="q15-0" name="q15" value="0"> Neutralt
+                <input type="radio" id="q15--1" name="q15" value="-1"> Dåligt
+            </div>
+            <hr>
+            <div class="question">
+                <label for="q16">16.<br>EU ska verka för att Palestina ska bli en självständig stat.</label>
+                <input type="radio" id="q16-1" name="q16" value="1" required> Bra
+                <input type="radio" id="q16-0" name="q16" value="0"> Neutralt
+                <input type="radio" id="q16--1" name="q16" value="-1"> Dåligt
+            </div>
+            <hr>
+            <div class="question">
+                <label for="q17">17.<br>Systembolagets monopol på alkoholförsäljning ska avskaffas.</label>
+                <input type="radio" id="q17-1" name="q17" value="1" required> Bra
+                <input type="radio" id="q17-0" name="q17" value="0"> Neutralt
+                <input type="radio" id="q17--1" name="q17" value="-1"> Dåligt
+            </div>
+            <button type="submit">Skicka in...</button>
+        </form>
+        <div class="result" id="result"></div>
+        <div class="images">
+            <img src="eu.png" alt="EU">
+            <img src="tegazine.png" alt="tegazine logga">
+        </div>
+    </div>
+    <script>
+        document.getElementById('valkompassForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            const userAnswers = [];
+            for (let [key, value] of formData.entries()) {
+                userAnswers.push(parseInt(value));
+            }
+
+            const partiesPositions = {
+                'Sverigedemokraterna': [-1, -1, 1, -1, 0, -1, -1, 1, -1, -1, 0, -1, -1, 1, 1, -1, 1],
+                'Kristdemokraterna': [0, -1, 1, -1, 1, -1, 0, -1, -1, -1, 1, -1, 0, 1, 1, -1, -1],
+                'Moderaterna': [1, -1, 1, -1, 1, -1, -1, -1, -1, 0, 1, 0, -1, 1, 1, -1, 1],
+                'Liberalerna': [1, 1, -1, 1, 1, 0, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1],
+                'Centerpartiet': [1, -1, -1, 1, 1, -1, 0, -1, -1, 1, -1, 0, -1, 0, 1, 1, -1],
+                'Socialdemokraterna': [1, 0, -1, 1, 1, 0, 0, -1, -1, 1, -1, 0, -1, -1, 1, 1, -1],
+                'Miljöpartiet': [1, -1, -1, 1, 1, -1, 1, -1, -1, 1, -1, -1, -1, -1, 1, 1, -1],
+                'Vänsterpartiet': [-1, -1, -1, 1, 1, 0, 1, 0, -1, 1, -1, -1, 0, 0, 1, 1, -1]
+            };
+
+            const similarityScores = {};
+            for (const party in partiesPositions) {
+                let score = 0;
+                for (let i = 0; i < userAnswers.length; i++) {
+                    if (userAnswers[i] === partiesPositions[party][i]) {
+                        score++;
+                    }
+                }
+                similarityScores[party] = (score / 17) * 100;
+            }
+
+            const sortedParties = Object.entries(similarityScores).sort((a, b) => b[1] - a[1]);
+
+            let resultHtml = "<h2>Ditt resultat:</h2>";
+            for (const [party, score] of sortedParties) {
+                resultHtml += `<div class="party">${party}: ${score.toFixed(2)}% lika</div>`;
+            }
+            document.getElementById('result').innerHTML = resultHtml;
+        });
+    </script>
+</body>
+</html>
